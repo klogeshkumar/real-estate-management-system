@@ -1,1 +1,29 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract PropertyDetail{
+    address public owner;
+
+    struct Property {
+        string propertyId;
+        string name;
+        string location;
+        string discription;
+        address currentOwner;
+    }
+
+    mapping(string => Property) public properties;
+    mapping(address => mapping(string => bool)) public hasAccess;
+
+    event PropertyAdded(
+        string indexed propertyId,
+        string name,
+        string location,
+        address indexed owner
+    );
+    event PropertyTransferred(
+        string indexed propertyId,
+        address indexed from,
+        address indexed to
+    );
 
